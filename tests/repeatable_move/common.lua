@@ -11,7 +11,7 @@ function M.run_builtin_find_test(file, spec)
   assert.are.same(1, vim.fn.filereadable(file), string.format('File "%s" not readable', file))
 
   -- load reference file
-  vim.cmd(string.format("edit %s", file))
+  pcall(vim.cmd.edit, file)
 
   vim.api.nvim_win_set_cursor(0, { spec.row, 0 })
   local line = vim.api.nvim_get_current_line()

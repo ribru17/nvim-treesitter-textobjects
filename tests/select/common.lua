@@ -7,7 +7,7 @@ function M.run_compare_cmds_test(file, spec, equal)
   assert.are.same(1, vim.fn.filereadable(file), string.format('File "%s" not readable', file))
 
   -- load reference file
-  vim.cmd(string.format("edit %s", file))
+  pcall(vim.cmd.edit, file)
 
   local to_compare_to = nil
   for _, cmd in pairs(spec.cmds) do
